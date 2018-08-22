@@ -22,11 +22,18 @@ def promedio_alumnos
 end
 
 
+def inasistencias
+  personas = []
+  File.open('listado.csv', 'r') { |file| personas = file.readlines.map(&:chomp) }
 
-
-
-
-
+  personas.each do |x|
+    data = x.split(', ')
+    no_vino = x.split('')
+    nombre = data[0]
+    faltas = no_vino.count('A')
+    puts "#{nombre}| Las inasistencias del alumno es de: #{faltas}"
+  end
+end
 
 
 eleccion = 0
